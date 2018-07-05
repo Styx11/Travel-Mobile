@@ -1,65 +1,28 @@
 <template>
   <div class="shoppingCart">
-    <div class="header">
-      购物车
-      <span class="iconfont">&#xe63f;</span>
-    </div>
-    <div
-      class="cartPane"
-      v-for="item in list"
-      v-bind:key='item.id'
-    >
-      <button
-        v-on:click='item.selected = !item.selected'
-        v-if="item.selected"
-        class="iconfont selectedTrue"
-      >&#xe8b6;</button>
-      <button
-        v-on:click='item.selected = !item.selected'
-        v-else
-        class="iconfont selectedFalse"
-      >&#xe8b5;</button>
-      <img
-        v-bind:src='item.imgUrl'
-        class="imgPane"
-      />
-      <div class="detailPane">
-        <h1 class="title">{{ item.name }}</h1>
-        <p class="desc">{{ item.desc }}</p>
-        <p class="price">￥{{ item.price }}</p>
-        <input-number
-          class="inputPane"
-          v-bind:value='item.counter'
-          @add="item.counter = $event"
-        ></input-number>
-      </div>
-    </div>
-    <div class="buyPane">
-      <button
-        v-on:click='selectItem'
-        v-if="selectMessage === '反选'"
-        class="iconfont selectedTrue"
-      >&#xe8b6;</button>
-      <button
-        v-on:click='selectItem'
-        v-else
-        class="iconfont selectedFalse"
-      >&#xe8b5;</button>
-      <span class="selectMessage">{{ selectMessage }}</span>
-      <p class="total">合计：<span class="price">￥ {{ totalPrice }}</span></p>
-      <a class="buy" href="">
-        去结算 ({{ totalCounter }})
-      </a>
-    </div>
+    <cart-header
+      class="header"
+    ></cart-header>
+    <cart-pane
+      :itemList='list'
+      @selectItem='list[$event.index].selected = $event.sel'
+    ></cart-pane>
+    <buy-pane
+      :itemList='list'
+    ></buy-pane>
   </div>
 </template>
 
 <script>
-import InputNumber from './components/input-number.vue'
+import CartPane from './components/cart-pane.vue'
+import CartHeader from './components/header.vue'
+import BuyPane from './components/buy-pane'
 export default {
   name: 'ShoppingCart',
   components: {
-    InputNumber: InputNumber
+    CartPane: CartPane,
+    CartHeader: CartHeader,
+    BuyPane: BuyPane
   },
   data: function () {
     return {
@@ -93,51 +56,6 @@ export default {
         }
       ]
     }
-  },
-  methods: {
-    selectItem: function () { // 列表全选
-      if (this.selectMessage === '全选') {
-        this.list.forEach(function (item) {
-          if (!item.selected) {
-            item.selected = true
-          }
-        })
-      } else {
-        this.list.forEach(function (item) {
-          if (item.selected) {
-            item.selected = false
-          }
-        })
-      }
-      return true
-    }
-  },
-  computed: {
-    selectMessage: function () {
-      var counter = 0
-      this.list.forEach(function (item) {
-        if (item.selected) {
-          counter++
-        }
-      })
-      return counter === this.list.length ? '反选' : '全选'
-    },
-    totalCounter: function () {
-      var counter = 0
-      this.list.forEach(function (item) {
-        if (item.selected) {
-          counter += item.counter
-        }
-      })
-      return counter
-    },
-    totalPrice: function () { // 计算属性--总价格
-      var totalPrice = 0
-      totalPrice = this.list.reduce(function (sum, item) {
-        return sum + (item.selected ? item.counter * item.price : 0)
-      }, 0)
-      return totalPrice.toString().replace(/\B(?=(\d{3})+$)/g, ',')
-    }
   }
 }
 </script>
@@ -149,85 +67,4 @@ export default {
       position fixed
       top 0
       left 0
-      width 100%
-      line-height .86rem
-      font-size .32rem
-      text-align center
-      border-bottom 1px solid #ccc
-      background #fff
-    .cartPane
-      display flex
-      margin .2rem 0
-      height 1.9rem
-      padding-left .26rem
-      button
-        background #fff
-        display inline-block
-        margin auto 0
-        cursor pointer
-      .selectedTrue
-        color #f23030
-        background #fff
-      .imgPane
-        width 1.7rem
-        heigth 1.7rem
-        padding .1rem
-      .detailPane
-        flex 1
-        min-width 0
-        position relative
-        padding-right .24rem
-        .title
-          display inline-block
-          font-size .32rem
-          font-weight bold
-          margin-top .14rem
-          inline-height .44rem
-        .desc
-          line-height 1.4em
-          margin-top .14rem
-          overflow: hidden
-          white-space: nowrap
-          text-overflow: ellipsis
-        .price
-          position absolute
-          left 0
-          bottom .24rem
-          font-size .32rem
-          color #f23030
-        .inputPane
-          position absolute
-          right 0
-          bottom .24rem
-          padding-right .24rem
-    .buyPane
-      position relative
-      display flex
-      width 100%
-      line-height .86rem
-      padding-left 0.26rem
-      button
-        background #fff
-        cursor pointer
-      .selectedTrue
-        color #f23030
-        background #fff
-      .selectMessage
-        padding-left .1rem
-      .total
-        padding-left .32rem
-        font-size .32rem
-        .price
-          color #f23030
-      .buy
-        position absolute
-        right 0
-        bottom 0
-        width 30%
-        max-width 300px
-        background #f23030
-        color #fff
-        font-size .32rem
-        text-align center
-        padding 0 .1rem
 </style>

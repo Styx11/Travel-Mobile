@@ -2,8 +2,8 @@
   <div class="inputPane">
     <button
       @click='handleReduce'
-      :disabled='currentValue <= min'
       class="iconfont handleButton"
+      :class="{disabledButton: currentValue <= min}"
     >&#xe60c;</button>
     <input
       type="text"
@@ -13,8 +13,8 @@
     >
     <button
       @click='handleAdd'
-      :disabled='currentValue >= max'
       class='iconfont handleButton'
+      :class="{disabledButton: currentValue >= max}"
     >&#xe63b;</button>
   </div>
 </template>
@@ -106,4 +106,7 @@ export default {
       padding 0 .1rem
       background #fff
       border 1px solid #ccc
+    .disabledButton
+      cursor default
+      color #bfbfbf
 </style>
