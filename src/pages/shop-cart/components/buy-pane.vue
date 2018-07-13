@@ -22,6 +22,7 @@
     <div
       class="del"
       v-else
+      v-on:click='delItem'
     >删除</div>
   </div>
 </template>
@@ -70,6 +71,9 @@ export default {
   methods: {
     selectAll: function () { // 列表全选
       this.bus.$emit('selectAll', this.selectMessage)
+    },
+    delItem: function () {
+      this.bus.$emit('delItem', this.totalCounter)
     }
   },
   mounted: function () {

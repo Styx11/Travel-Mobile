@@ -80,6 +80,15 @@ export default {
         })
       }
     })
+    this.bus.$on('delItem', function (counter) {
+      let arr = []
+      _this.list.forEach(function (item) {
+        if (!item.selected) {
+          arr.push(item)
+        }
+      })
+      _this.list = arr
+    })
   }
 }
 </script>

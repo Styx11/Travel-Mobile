@@ -53,6 +53,15 @@ export default {
           selected: false,
           desc: '新一代MacBook，她快如闪电、绚丽夺目',
           imgUrl: 'https://img11.360buyimg.com/n7/jfs/t15601/39/1909654599/97649/2a2bbc75/5a694948N5cc36e24.jpg'
+        },
+        {
+          id: 4,
+          price: 2466,
+          counter: 1,
+          name: 'Apple Watch',
+          selected: false,
+          desc: '让关心的事触手可及',
+          imgUrl: 'https://img10.360buyimg.com/n7/jfs/t19837/127/929293430/224957/3c6981e/5b0fc4c7N748a99d1.png'
         }
       ]
     }
