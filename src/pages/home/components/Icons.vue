@@ -93,9 +93,10 @@ export default {
       position absolute
       bottom 6px
   .icons
-    margin-top .1rem
+    padding-top .1rem
     height 0
     padding-bottom 50%
+    background #fff
     .icon
       overflow: hidden
       position relative
