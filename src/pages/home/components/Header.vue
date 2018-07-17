@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="header-left">
+    <div class="header-left" @click='handleRouter'>
       <span class="iconfont">&#xe624;</span>
     </div>
     <div class="header-input">
@@ -10,15 +10,22 @@
       </a>
     </div>
     <div class="header-right">
-      <span>城市</span>
-      <span class="iconfont arrow">&#xe6aa;</span>
+      <router-link to="/city" class="router">
+        <span>城市</span>
+        <span class="iconfont arrow">&#xe6aa;</span>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeHeader'
+  name: 'HomeHeader',
+  methods: {
+    handleRouter: function () {
+      this.$router.go(-1)
+    }
+  }
 }
 </script>
 
@@ -61,7 +68,9 @@ export default {
       width: 1.24rem;
       float: right;
       text-align: center;
-      .arrow
-        margin-left: -.09rem;
-        font-size: .32rem;
+      .router
+        color #fff
+        .arrow
+          margin-left: -.09rem;
+          font-size: .32rem;
 </style>
