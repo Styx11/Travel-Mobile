@@ -10,7 +10,7 @@
         <div class='hot' v-for='item in hotCities' :key='item.id'>{{ item.name }}</div>
       </div>
       <div class='area' v-for='(item, key) of cities' :key="key">
-        <div class='header'>{{ key }}</div>
+        <div class='header' :ref="key">{{ key }}</div>
         <div class="city" v-for="city in item" :key="city.id">{{ city.name }}</div>
       </div>
     </div>
@@ -32,7 +32,16 @@ export default {
     }
   },
   mounted: function () {
+    let _this = this
     this.scroll = new Bscroll(this.$refs.wrapper)
+    this.bus.$on('handleClick', function (msg) {
+      let element = _this.$refs[msg][0]
+      _this.scroll.scrollToElement(element)
+    })
+    this.bus.$on('handleTouch', function (msg) {
+      let element = _this.$refs[msg][0]
+      _this.scroll.scrollToElement(element)
+    })
   }
 }
 </script>
