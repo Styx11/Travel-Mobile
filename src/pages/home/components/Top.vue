@@ -14,7 +14,7 @@
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item, index) of list" :key="item.id">
           <div class="imgWrapper">
-            <img class="swiper-img" :src="item.imgUrl" />
+            <img class="swiper-img" v-lazy="item.imgUrl" />
             <img
               v-if="index < 3"
               :src="topIcon(index)"

@@ -13,7 +13,7 @@
        :key='item.id'
       >
         <div class="imgPane">
-          <img class="img" :src="item.imgUrl">
+          <img class="img" v-lazy="item.imgUrl">
           <span class="abled" :style="isabled(item.abled).style">{{ isabled(item.abled).msg }}</span>
         </div>
         <div class="detailPane">

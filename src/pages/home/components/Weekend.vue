@@ -5,7 +5,7 @@
     </div>
     <div class="item-wrapper">
       <div class="item" v-for="item in list" :key="item.id">
-        <img class="item-img" :src="item.imgUrl"/>
+        <img class="item-img" v-lazy="item.imgUrl"/>
         <div class="item-info">
           <p class="item-name">{{ item.name }}</p>
           <p class="item-desc">{{ item.desc }}</p>
