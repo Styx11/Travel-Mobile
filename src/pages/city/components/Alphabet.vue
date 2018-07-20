@@ -26,7 +26,9 @@ export default {
   },
   data: function () {
     return {
-      tapStatus: false
+      tapStatus: false,
+      startY: 0,
+      timer: null
     }
   },
   computed: {
@@ -38,6 +40,9 @@ export default {
       return letters
     }
   },
+  updata: function () { // Ajax请求数据完成时执行一次
+    this.startY = this.$refs['A'][0].offsetTop
+  },
   methods: {
     handleClick: function (event) {
       let msg = event.target.innerText
@@ -48,12 +53,16 @@ export default {
     },
     touchMove: function (event) {
       if (this.tapStatus) {
-        let startY = this.$refs['A'][0].offsetTop
-        let touchY = event.touches[0].clientY - 98
-        let index = Math.floor((touchY - startY) / 20)
-        if (index >= 0 && index < this.letters.length) {
-          this.bus.$emit('handleTouch', this.letters[index])
+        if (this.timer) { // 函数节流
+          clearTimeout(this.timer)
         }
+        this.timer = setTimeout(() => {
+          let touchY = event.touches[0].clientY - 98
+          let index = Math.floor((touchY - this.startY) / 20)
+          if (index >= 0 && index < this.letters.length) {
+            this.bus.$emit('handleTouch', this.letters[index])
+          }
+        }, 16)
       }
     },
     touchEnd: function () {
