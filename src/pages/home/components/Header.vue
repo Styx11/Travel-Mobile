@@ -11,7 +11,7 @@
     </div>
     <div class="header-right">
       <router-link to="/city" class="router">
-        <span>城市</span>
+        <span>{{ city }}</span>
         <span class="iconfont arrow">&#xe6aa;</span>
       </router-link>
     </div>
@@ -21,10 +21,23 @@
 <script>
 export default {
   name: 'HomeHeader',
+  data: function () {
+    return {
+      city: '北京'
+    }
+  },
   methods: {
     handleRouter: function () {
       this.$router.go(-1)
     }
+  },
+  created: function () {
+    this.bus.$on('citySelect', (msg) => {
+      this.city = msg
+    })
+  },
+  beforeDestroy: function () {
+    this.bus.$off('citySelect', this.city)
   }
 }
 </script>
@@ -65,6 +78,9 @@ export default {
         text-overflow: ellipsis;
         color: #ccc
     .header-right
+      overflow hidden
+      white-space: nowrap;
+      text-overflow: ellipsis;
       width: 1.24rem;
       float: right;
       text-align: center;

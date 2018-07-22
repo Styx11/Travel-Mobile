@@ -13,13 +13,15 @@
     <div class="wrapper">
       <swiper :options="swiperOption">
         <swiper-slide v-for="(item, index) of list" :key="item.id">
-          <div class="imgWrapper">
-            <img class="swiper-img" v-lazy="item.imgUrl" />
-            <img
-              v-if="index < 3"
-              :src="topIcon(index)"
-              class="topIcon"/>
-          </div>
+          <router-link tag="div" :to="'/detail/' + item.id">
+            <div class="imgWrapper">
+              <img class="swiper-img" v-lazy="item.imgUrl" />
+              <img
+                v-if="index < 3"
+                :src="topIcon(index)"
+                class="topIcon"/>
+            </div>
+          </router-link>
           <div class="desc">
             <p>{{ item.name }}</p>
             <div class="priceWrapper">

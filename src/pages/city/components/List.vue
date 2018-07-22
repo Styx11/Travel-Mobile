@@ -7,11 +7,21 @@
       </div>
       <div class='area'>
         <div class='header'>热门城市</div>
-        <div class='hot' v-for='item in hotCities' :key='item.id'>{{ item.name }}</div>
+        <div
+          class='hot'
+          v-for='item in hotCities'
+          :key='item.id'
+          @click="citySelect(item.name)"
+        >{{ item.name }}</div>
       </div>
       <div class='area' v-for='(item, key) of cities' :key="key">
         <div class='header' :ref="key">{{ key }}</div>
-        <div class="city" v-for="city in item" :key="city.id">{{ city.name }}</div>
+        <div
+          class="city"
+          v-for="city in item"
+          :key="city.id"
+          @click="citySelect(city.name)"
+        >{{ city.name }}</div>
       </div>
     </div>
   </div>
@@ -30,6 +40,22 @@ export default {
       type: Object,
       required: true
     }
+  },
+  data: function () {
+    return {
+      msg: ''
+    }
+  },
+  methods: {
+    citySelect: function (msg) {
+      this.msg = msg
+      this.$router.replace('/')
+    }
+  },
+  beforeDestroy: function () {
+    this.bus.$emit('citySelect', this.msg)
+    this.bus.$off('handleClick')
+    this.bus.$off('handleTouch')
   },
   mounted: function () {
     let _this = this
