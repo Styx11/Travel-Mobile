@@ -1,20 +1,26 @@
 <template>
-  <div class="banner">
-    <span
-      class="iconfont banner-back"
-      @click="handleRouter"
-    >&#xe624;</span>
-    <img v-lazy="list[0].imgUrl" class="banner-img"/>
-    <gallery :imgList='list'></gallery>
-    <div class="banner-info">
-      <div class="banner-info-title">
-        {{ list[0].title }}
-      </div>
-      <div class="banner-info-img">
-        <span class="iconfont">&#xe67a;</span>
-        {{ list.length }} 张图片
+  <div>
+    <div class="banner">
+      <span
+        class="iconfont banner-back"
+        @click="handleRouter"
+      >&#xe624;</span>
+      <img v-lazy="list[0].bannerImg" @click="handleBannerClick" class="banner-img"/>
+      <div class="banner-info">
+        <div class="banner-info-title">
+          {{ list[0].title }}
+        </div>
+        <div class="banner-info-img">
+          <span class="iconfont">&#xe67a;</span>
+          {{ list.length }} 张图片
+        </div>
       </div>
     </div>
+    <gallery
+      :imgList='list'
+      v-show="show"
+      @handleGallery="handleBannerClick"
+    ></gallery>
   </div>
 </template>
 
@@ -27,10 +33,12 @@ export default {
   },
   data: function () {
     return {
+      show: false,
       list: [
         {
           id: 1,
-          imgUrl: '//img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_600x330_f922b488.jpg',
+          bannerImg: '//img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_600x330_f922b488.jpg',
+          imgUrl: 'http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_350x240_8e61302a.jpg',
           title: '故宫(AAAAA景区)'
         }, {
           id: 2,
@@ -66,6 +74,9 @@ export default {
   methods: {
     handleRouter: function () {
       this.$router.go(-1)
+    },
+    handleBannerClick: function () {
+      this.show = !this.show
     }
   }
 }
