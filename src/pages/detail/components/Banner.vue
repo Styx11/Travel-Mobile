@@ -1,10 +1,6 @@
 <template>
   <div>
     <div class="banner">
-      <span
-        class="iconfont banner-back"
-        @click="handleRouter"
-      >&#xe624;</span>
       <img v-lazy="list[0].bannerImg" @click="handleBannerClick" class="banner-img"/>
       <div class="banner-info">
         <div class="banner-info-title">
@@ -72,9 +68,6 @@ export default {
     }
   },
   methods: {
-    handleRouter: function () {
-      this.$router.go(-1)
-    },
     handleBannerClick: function () {
       this.show = !this.show
     }

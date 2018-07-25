@@ -3,10 +3,10 @@
     <div class="gallery-cover" @click="handleGallery"></div>
     <swiper :options="swiperOption" style="height: auto" class="gallery-content">
       <swiper-slide v-for="item in list" :key="item.id">
-      <img
-        class="gallery-content-img"
-        :src="item.imgUrl"
-      />
+        <img
+          class="gallery-content-img"
+          :src="item.imgUrl"
+        />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -27,6 +27,8 @@ export default {
       swiperOption: {
         pagination: '.swiper-pagination',
         paginationType: 'fraction',
+        observeParents: true,
+        observer: true,
         autoplay: false
       },
       list: this.imgList
