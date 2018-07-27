@@ -33,9 +33,9 @@ export default {
     },
     handleScroll: function () {
       let top = window.pageYOffset
-      if (top > 55) {
-        let opacity = top / 140
-        this.styleOpacity.opacity = top > 140 ? 1 : opacity
+      if (top > 10) {
+        let opacity = top / 145
+        this.styleOpacity.opacity = top > 145 ? 1 : opacity
         this.showAbs = false
       } else {
         this.showAbs = true
@@ -44,6 +44,9 @@ export default {
   },
   mounted: function () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeDestroy: function () { // 解除全局事件绑定
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -63,6 +66,7 @@ export default {
     background rgba(0, 0, 0, 0.5)
   .header-fix
     position fixed
+    z-index: 91
     top 0
     left 0
     right 0
