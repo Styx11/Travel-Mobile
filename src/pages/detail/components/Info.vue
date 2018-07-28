@@ -22,20 +22,41 @@
       北京市东城区景山前街4号
       <span class="iconfont more">&#xe8b7;</span>
     </div>
-    <div class="info-notice"></div>
+    <div
+      class="info-notice"
+      @click="handleNoticeClick"
+    >
+      <span class="iconfont horn">&#xe6ec;</span>
+      testtesttesttesttesttesttesttesttestt
+      <span class="iconfont more">&#xe8b7;</span>
+    </div>
+    <info-notice
+      v-show="notice"
+      @handleNoticeClick='handleNoticeClick'
+    ></info-notice>
   </div>
 </template>
 
 <script>
+import InfoNotice from '@/pages/common/Notice.vue'
 export default {
   name: 'Info',
+  components: {
+    InfoNotice
+  },
   data: function () {
     return {
       detail: {
         rate: 4.9,
         comment: 249909,
         strategy: 85
-      }
+      },
+      notice: false
+    }
+  },
+  methods: {
+    handleNoticeClick: function () {
+      this.notice = !this.notice
     }
   },
   computed: {
@@ -87,4 +108,20 @@ export default {
         margin-right .2rem
       .more
         float right
+    .info-notice
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      width 95.5%
+      line-height .9rem
+      color #ff8300
+      font-size .38rem
+      background #fff5e5
+      .horn
+        float left
+        margin-right .1rem
+        font-size .46rem
+      .more
+        float right
+        color #000
 </style>
