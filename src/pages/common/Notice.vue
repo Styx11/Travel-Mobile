@@ -4,7 +4,13 @@
       <span class="iconfont horn">&#xe6ec;</span>
       <span class="title">景区公告</span>
     </div>
-    <div class="notice-body"></div>
+    <div class="notice-content">
+      <p
+        class="content"
+        v-for="item in notice"
+        :key="item.id"
+      >{{ item.id }}. {{ item.content }}</p>
+    </div>
     <div class="notice-exit">
       <span class="iconfont exit" @click="handleNotice">&#xe77d;</span>
     </div>
@@ -14,6 +20,12 @@
 <script>
 export default {
   name: 'Notice',
+  props: {
+    notice: {
+      type: Array,
+      required: true
+    }
+  },
   methods: {
     handleNotice: function () {
       this.$emit('handleNoticeClick')
@@ -55,4 +67,17 @@ export default {
       text-align center
       .exit
         font-size .54rem
+  .notice-content
+    position fixed
+    width 100%
+    top 3.2rem
+    padding 0 .2rem
+    font-size .3rem
+    color #333
+    text-align left
+    .content
+      width 95%
+      line-height 1.5em
+      padding-bottom .12rem
+      word-wrap break-word
 </style>

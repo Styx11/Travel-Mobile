@@ -27,11 +27,19 @@
       @click="handleNoticeClick"
     >
       <span class="iconfont horn">&#xe6ec;</span>
-      testtesttesttesttesttesttesttesttestt
+      <p class="content">
+        <span
+          v-for="item in notice"
+          :key="item.id"
+        >
+          {{ item.id }}. {{ item.content }}
+        </span>
+      </p>
       <span class="iconfont more">&#xe8b7;</span>
     </div>
     <info-notice
-      v-show="notice"
+      :notice='notice'
+      v-show="noticeShow"
       @handleNoticeClick='handleNoticeClick'
     ></info-notice>
   </div>
@@ -51,12 +59,21 @@ export default {
         comment: 249909,
         strategy: 85
       },
-      notice: false
+      notice: [
+        {
+          id: 1,
+          content: '除法定节假日，故宫博物院实行周一闭馆。'
+        }, {
+          id: 2,
+          content: '如遇天安门广场戒严，请从故宫两侧（东华门或西华门），沿故宫城墙步行至午门验票！'
+        }
+      ],
+      noticeShow: false
     }
   },
   methods: {
     handleNoticeClick: function () {
-      this.notice = !this.notice
+      this.noticeShow = !this.noticeShow
     }
   },
   computed: {
@@ -109,17 +126,22 @@ export default {
       .more
         float right
     .info-notice
-      overflow hidden
-      white-space nowrap
-      text-overflow ellipsis
+      padding-right 2rem
       width 95.5%
-      line-height .9rem
+      line-height .7rem
+      padding-top .2rem
       color #ff8300
-      font-size .38rem
+      font-size .3rem
       background #fff5e5
+      .content
+        overflow hidden
+        white-space nowrap
+        text-overflow ellipsis
+        display inline-block
+        width 84%
+        padding 0 .15rem
       .horn
         float left
-        margin-right .1rem
         font-size .46rem
       .more
         float right
