@@ -1,5 +1,5 @@
 <template>
-  <div class="gallery">
+  <div class="gallery" v-show="show">
     <div class="gallery-cover" @click="handleGallery"></div>
     <swiper :options="swiperOption" style="height: auto" class="gallery-content">
       <swiper-slide v-for="item in list" :key="item.id">
@@ -31,13 +31,20 @@ export default {
         observer: true,
         autoplay: false
       },
-      list: this.imgList
+      list: this.imgList,
+      show: false
     }
   },
   methods: {
     handleGallery: function () {
-      this.$emit('handleGallery')
+      this.bus.$emit('galleryClick', false)
+      this.show = false
     }
+  },
+  mounted: function () {
+    this.bus.$on('bannerClick', (show) => {
+      this.show = show
+    })
   }
 }
 </script>
@@ -52,6 +59,7 @@ export default {
     width 100%
     .gallery-cover
       z-index 98
+      overflow hidden
       position absolute
       top 0
       left 0
@@ -62,6 +70,9 @@ export default {
     .gallery-content
       z-index 99
       width 100%
+      position fixed
+      top 4rem
+      left 0
       background #000
       .gallery-content-img
         width 100%

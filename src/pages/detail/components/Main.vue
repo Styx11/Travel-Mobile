@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper" ref="wrapper">
-    <div class="content">
+    <div>
       <detail-banner></detail-banner>
       <detail-info></detail-info>
+      <div class="content"></div>
     </div>
   </div>
 </template>
@@ -18,7 +19,7 @@ export default {
     DetailBanner
   },
   mounted: function () {
-    this.scroll = new Bscroll(this.$refs.wrapper, { probeType: 2 })
+    this.scroll = new Bscroll(this.$refs.wrapper, { probeType: 3 })
     this.scroll.on('scroll', (pos) => {
       this.bus.$emit('scroll', -pos.y)
     })

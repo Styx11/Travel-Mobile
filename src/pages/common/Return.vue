@@ -36,7 +36,7 @@ export default {
     z-index 1
     position fixed
     right .2rem
-    bottom .2rem
+    bottom .5rem
     width .8rem
     height .8rem
     line-height .8rem
