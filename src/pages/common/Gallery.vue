@@ -51,7 +51,7 @@ export default {
     justify-content center
     width 100%
     .gallery-cover
-      z-index 1
+      z-index 98
       position absolute
       top 0
       left 0
@@ -60,7 +60,7 @@ export default {
       width 100%
       background #000
     .gallery-content
-      z-index 2
+      z-index 99
       width 100%
       background #000
       .gallery-content-img

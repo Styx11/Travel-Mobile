@@ -1,27 +1,23 @@
 <template>
-  <div>
-    <detail-banner></detail-banner>
-    <detail-header></detail-header>
-    <detail-info></detail-info>
-    <div class="content"></div>
+  <div class="wrapper" ref="wrapper">
+    <div class="content">
+      <detail-header></detail-header>
+      <detail-main></detail-main>
+      <Return></Return>
+    </div>
   </div>
 </template>
 
 <script>
-import DetailBanner from './components/Banner.vue'
+import Return from '@/pages/common/Return.vue'
 import DetailHeader from './components/Header.vue'
-import DetailInfo from './components/Info.vue'
+import DetailMain from './components/Main.vue'
 export default {
   name: 'Detail',
   components: {
-    DetailBanner: DetailBanner,
     DetailHeader: DetailHeader,
-    DetailInfo: DetailInfo
+    DetailMain: DetailMain,
+    Return: Return
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-  .content
-    height 50rem
-</style>

@@ -24,18 +24,21 @@ export default {
       styleOpacity: {
         opacity: 0
       },
-      timer: null
+      timer: null,
+      top: 0
     }
   },
   methods: {
     handleRouter: function () {
       this.$router.go(-1)
-    },
-    handleScroll: function () {
-      let top = window.pageYOffset
+    }
+  },
+  watch: {
+    top: function () {
+      let top = this.top
       if (top > 10) {
-        let opacity = top / 145
-        this.styleOpacity.opacity = top > 145 ? 1 : opacity
+        let opacity = top / 160
+        this.styleOpacity.opacity = top > 160 ? 1 : opacity
         this.showAbs = false
       } else {
         this.showAbs = true
@@ -43,16 +46,16 @@ export default {
     }
   },
   mounted: function () {
-    window.addEventListener('scroll', this.handleScroll)
-  },
-  beforeDestroy: function () { // 解除全局事件绑定
-    window.removeEventListener('scroll', this.handleScroll)
+    this.bus.$on('scroll', (top) => {
+      this.top = top
+    })
   }
 }
 </script>
 
 <style lang="stylus" scoped>
   .header >>> .header-back
+    z-index: 91
     position absolute
     top .2rem
     left .2rem
