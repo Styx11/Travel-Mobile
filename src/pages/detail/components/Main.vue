@@ -2,8 +2,9 @@
   <div class="wrapper" ref="wrapper">
     <div>
       <detail-banner></detail-banner>
-      <detail-info></detail-info>
-      <div class="content"></div>
+      <detail-info :notice="notice"></detail-info>
+      <detail-ticket></detail-ticket>
+      <detail-footer></detail-footer>
     </div>
   </div>
 </template>
@@ -12,11 +13,20 @@
 import Bscroll from 'better-scroll'
 import DetailBanner from './Banner.vue'
 import DetailInfo from './Info.vue'
+import DetailTicket from './Ticket.vue'
+import DetailFooter from '@/pages/common/Footer.vue'
 export default {
   name: 'Main',
   components: {
     DetailInfo,
-    DetailBanner
+    DetailBanner,
+    DetailTicket,
+    DetailFooter
+  },
+  props: {
+    notice: {
+      type: Array
+    }
   },
   mounted: function () {
     this.scroll = new Bscroll(this.$refs.wrapper, { probeType: 3 })
@@ -39,6 +49,4 @@ export default {
     left 0
     right 0
     bottom 0
-    .content
-      height 50rem
 </style>

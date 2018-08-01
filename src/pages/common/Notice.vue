@@ -1,5 +1,5 @@
 <template>
-  <div class="notice">
+  <div class="notice" v-show="show">
     <div class="notice-header">
       <span class="iconfont horn">&#xe6ec;</span>
       <span class="title">景区公告</span>
@@ -26,17 +26,28 @@ export default {
       required: true
     }
   },
+  data: function () {
+    return {
+      show: false
+    }
+  },
   methods: {
     handleNotice: function () {
-      this.$emit('handleNoticeClick')
+      this.show = false
+      this.bus.$emit('noticeClick', this.show)
     }
+  },
+  mounted: function () {
+    this.bus.$on('infoClick', (show) => {
+      this.show = show
+    })
   }
 }
 </script>
 
 <style lang="stylus" scoped>
   .notice
-    z-index 91
+    z-index 93
     overflow hidden
     position absolute
     top 0
@@ -66,6 +77,7 @@ export default {
       height .4rem
       text-align center
       .exit
+        z-index 93
         font-size .54rem
   .notice-content
     position fixed

@@ -17,7 +17,7 @@ import HomeIcons from './components/Icons.vue'
 import HomeTop from './components/Top.vue'
 import HomeRecommend from './components/Recommend.vue'
 import HomeWeekend from './components/Weekend.vue'
-import HomeFooter from './components/Footer.vue'
+import HomeFooter from '@/pages/common/Footer.vue'
 export default {
   name: 'Home',
   components: {

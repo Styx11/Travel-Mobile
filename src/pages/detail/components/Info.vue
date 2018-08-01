@@ -24,7 +24,7 @@
     </div>
     <div
       class="info-notice"
-      @click="handleNoticeClick"
+      @click="infoClick"
     >
       <span class="iconfont horn">&#xe6ec;</span>
       <p class="content">
@@ -37,20 +37,16 @@
       </p>
       <span class="iconfont more">&#xe8b7;</span>
     </div>
-    <info-notice
-      :notice='notice'
-      v-show="noticeShow"
-      @handleNoticeClick='handleNoticeClick'
-    ></info-notice>
   </div>
 </template>
 
 <script>
-import InfoNotice from '@/pages/common/Notice.vue'
 export default {
   name: 'Info',
-  components: {
-    InfoNotice
+  props: {
+    notice: {
+      type: Array
+    }
   },
   data: function () {
     return {
@@ -59,22 +55,19 @@ export default {
         comment: 249909,
         strategy: 85
       },
-      notice: [
-        {
-          id: 1,
-          content: '除法定节假日，故宫博物院实行周一闭馆。'
-        }, {
-          id: 2,
-          content: '如遇天安门广场戒严，请从故宫两侧（东华门或西华门），沿故宫城墙步行至午门验票！'
-        }
-      ],
       noticeShow: false
     }
   },
   methods: {
-    handleNoticeClick: function () {
-      this.noticeShow = !this.noticeShow
+    infoClick: function () {
+      this.noticeShow = true
+      this.bus.$emit('infoClick', this.noticeShow)
     }
+  },
+  mounted: function () {
+    this.bus.$on('noticeClick', (show) => {
+      this.noticeShow = show
+    })
   },
   computed: {
     rateMsg: function () {
