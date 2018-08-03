@@ -2,7 +2,7 @@
   <div class="gallery" v-show="show">
     <div class="gallery-cover" @click="handleGallery"></div>
     <swiper :options="swiperOption" style="height: auto" class="gallery-content">
-      <swiper-slide v-for="item in list" :key="item.id">
+      <swiper-slide v-for="item in imgList" :key="item.id">
         <img
           class="gallery-content-img"
           :src="item.imgUrl"
@@ -31,7 +31,6 @@ export default {
         observer: true,
         autoplay: false
       },
-      list: this.imgList,
       show: false
     }
   },
