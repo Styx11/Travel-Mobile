@@ -3,7 +3,7 @@
     <div>
       <div class='area'>
         <div class='header'>当前城市</div>
-        <div class='local'>北京</div>
+        <div class='local' @click="citySelect('北京')">北京</div>
       </div>
       <div class='area'>
         <div class='header'>热门城市</div>
@@ -56,10 +56,14 @@ export default {
     this.bus.$emit('citySelect', this.msg)
     this.bus.$off('handleClick')
     this.bus.$off('handleTouch')
+    this.bus.$off('searchSelect')
   },
   mounted: function () {
     let _this = this
     this.scroll = new Bscroll(this.$refs.wrapper)
+    this.bus.$on('searchSelect', (msg) => {
+      this.citySelect(msg)
+    })
     this.bus.$on('handleClick', function (msg) {
       let element = _this.$refs[msg][0]
       _this.scroll.scrollToElement(element)

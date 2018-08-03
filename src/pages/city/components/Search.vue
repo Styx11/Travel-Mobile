@@ -14,6 +14,7 @@
           class="search-content-item"
           v-for="item in list"
           :key="item.id"
+          @click="searchSelect(item.name)"
         >{{ item.name }}</li>
         <li
           v-show="hasNoData"
@@ -39,6 +40,11 @@ export default {
       keyword: '',
       list: [],
       timer: null
+    }
+  },
+  methods: {
+    searchSelect: function (msg) {
+      this.bus.$emit('searchSelect', msg)
     }
   },
   watch: {

@@ -4,10 +4,12 @@
       <span class="iconfont">&#xe624;</span>
     </div>
     <div class="header-input">
-      <a  class="input-text">
-        <span class="iconfont">&#xe632;</span>
-        <span>输入城市/景点/游玩主题</span>
-      </a>
+      <router-link to="/city" class="router">
+        <a  class="input-text">
+          <span class="iconfont">&#xe632;</span>
+          <span>输入城市/景点/游玩主题</span>
+        </a>
+      </router-link>
     </div>
     <div class="header-right">
       <router-link to="/city" class="router">

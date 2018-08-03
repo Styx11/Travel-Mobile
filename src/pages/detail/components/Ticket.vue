@@ -1,6 +1,6 @@
 <template>
   <div class="ticket">
-    <div class="content" v-for="items in ticket" :key="items.id">
+    <div class="content" v-for="items in tickets" :key="items.id">
       <div class="header">
         <span class="header-icon"></span>
         <span class="header-title">{{ items.title }}</span>
@@ -53,161 +53,14 @@
 <script>
 export default {
   name: 'Ticket',
-  data: function () {
-    return {
-      show: false,
-      "totalTicket": {
-        "ticket": [{
-          "id": 1,
-          "title": "当日票",
-          "children": [{
-            "id": 1,
-            "title": "【当日票】故宫老人票",
-            "idRequired": true,
-            "unfold": false,
-            "detail": [{
-              "id": 1,
-              "title": "【上午场】故宫成人票凭身份证入园（快速入园）",
-              "abled": "23:59前可订明日",
-              "price": 60
-            }, {
-              "id": 2,
-              "title": "【上午场】北京故宫成人票",
-              "abled": "23:50前可订明日",
-              "price": 60
-            }, {
-              "id": 3,
-              "title": "【上午场】故宫成人票【刷证件入园，支持护照和港澳通行证】",
-              "abled": "23:59前可订明日",
-              "price": 60
-            }]
-          }]
-        }, {
-          "id": 2,
-          "title": "预售学生票",
-          "children": [{
-            "id": 0,
-            "title": "上午场",
-            "idRequired": true,
-            "unfold": false,
-            "detail": [{
-              "id": 1,
-              "title": "【上午场】故宫学生票凭身份证入园（快速入园）",
-              "abled": "23:59前可订明日",
-              "price": 20
-            }, {
-              "id": 2,
-              "title": "【上午场】故宫学生票【刷证件入园，支持护照和港澳通行证】",
-              "abled": "23:50前可订明日",
-              "price": 20
-            }]
-          }, {
-            "id": 2,
-            "title": "下午场",
-            "idRequired": true,
-            "unfold": false,
-            "detail": [{
-              "id": 1,
-              "title": "【下午场】故宫学生票凭身份证入园（快速入园）",
-              "abled": "23:59前可订明日",
-              "price": 20
-            }, {
-              "id": 2,
-              "title": "【下午场】故宫学生票【刷证件入园，支持护照和港澳通行证】",
-              "abled": "23:50前可订明日",
-              "price": 20
-            }]
-          }]
-        }, {
-          "id": 3,
-          "title": "预售老人票",
-          "children": [{
-            "id": 1,
-            "title": "上午场",
-            "idRequired": true,
-            "unfold": false,
-            "detail": [{
-              "id": 1,
-              "title": "【上午场】故宫老人票凭身份证入园（快速入园）",
-              "abled": "23:59前可订明日",
-              "price": 30
-            }, {
-              "id": 2,
-              "title": "【上午场】故宫老人票【刷证件入园，支持护照和港澳通行证】",
-              "abled": "23:50前可订明日",
-              "price": 30
-            }]
-          }, {
-            "id": 2,
-            "title": "下午场",
-            "idRequired": true,
-            "unfold": false,
-            "detail": [{
-              "id": 1,
-              "title": "【下午场】故宫老人票凭身份证入园（快速入园）",
-              "abled": "23:59前可订明日",
-              "price": 30
-            }, {
-              "id": 2,
-              "title": "【下午场】故宫老人票【刷证件入园，支持护照和港澳通行证】",
-              "abled": "23:50前可订明日",
-              "price": 30
-            }]
-          }]
-        }, {
-          "id": 4,
-          "title": "导游讲解",
-          "children": [{
-            "id": 1,
-            "title": "【大内御讲 9:00场】蓝琪儿格格带您穿越故宫",
-            "idRequired": false,
-            "unfold": false,
-            "detail": [{
-              "id": 1,
-              "title": "【大内御讲9:00场】格格、阿哥带您穿越故宫（不含故宫门票）",
-              "abled": "23:59前可订明日",
-              "price": 65
-            }, {
-              "id": 2,
-              "title": "【大内御讲9:00场】阿哥格格带您穿越故宫（含故宫+珍宝馆）",
-              "abled": "23:50前可订明日",
-              "price": 135
-            }, {
-              "id": 3,
-              "title": "【大内御讲9:00场】阿哥格格带您穿越故宫不含故宫门票",
-              "abled": "23:59前可订明日",
-              "price": 65
-            }]
-          }, {
-            "id": 2,
-            "title": "【09:00场次】故宫讲解服务",
-            "idRequired": false,
-            "unfold": false,
-            "detail": [{
-              "id": 1,
-              "title": "故宫博物院人工讲解服务+赠送无线耳麦(1.2米<=儿童免费)",
-              "abled": "23:59前可订明日",
-              "price": 39
-            }, {
-              "id": 2,
-              "title": "【配无线耳麦】北京故宫-导游讲解服务（09:00场不含门票）",
-              "abled": "23:50前可订明日",
-              "price": 25
-            }, {
-              "id": 3,
-              "title": "【9点/13点半场】故宫门票+资深导游人工讲解*配备无线耳麦",
-              "abled": "23:59前可订明日",
-              "price": 86
-            }]
-          }]
-        }]
-      }
+  props: {
+    tickets: {
+      type: Array
     }
   },
-  computed: {
-    ticket: function () {
-      let ticket = this.totalTicket['ticket']
-      return ticket
+  data: function () {
+    return {
+      show: false
     }
   },
   methods: {

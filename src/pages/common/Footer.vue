@@ -44,6 +44,7 @@ export default {
     width 100%
     height 0
     padding-bottom 30%
+    margin-top .3rem
     background #f3f3f3
     .footer-nav
       width 300px

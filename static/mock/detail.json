@@ -1,0 +1,180 @@
+{
+  "ret": true,
+  "data": {
+    "pictures": [{
+      "id": 1,
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1409/19/adca619faaab0898245dc4ec482b5722.jpg_350x240_8e61302a.jpg"
+    }, {
+      "id": 2,
+      "imgUrl": "http://img1.qunarzz.com/sight/p55/201211/04/fbcab3e5d6479ce893835fbb.jpg_350x240_df8ba9f7.jpg"
+    }, {
+      "id": 3,
+      "imgUrl": "http://img1.qunarzz.com/wugc/p180/201306/16/7f08e81624346b1693835fbb.jpg_350x240_b09a9503.jpg"
+    }, {
+      "id": 4,
+      "imgUrl": "http://img1.qunarzz.com/wugc/p123/201211/19/a2045d091f02b25493835fbb.png_350x240_cf4cd08e.png"
+    }, {
+      "id": 5,
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1410/e3/73da8d3e19cdc41c1932d4fcd22ec792.water.jpg_350x240_af846382.jpg"
+    }, {
+      "id": 6,
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1410/34/f540a04367d06820af4dfeaf0ad40257.water.jpg_350x240_100fac79.jpg"
+    }, {
+      "id": 7,
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1410/9d/fe8109ab5df1c9c324e74284fa802e72.water.jpg_350x240_8571d9ed.jpg"
+    }, {
+      "id": 8,
+      "imgUrl": "http://img1.qunarzz.com/wugc/p238/201306/16/d9090c728fed64eb93835fbb.jpg_350x240_afe6c0fa.jpg"
+    }, {
+      "id": 9,
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1501/af/af47583adca3f972.water.jpg_350x240_95007698.jpg"
+    }, {
+      "id": 10,
+      "imgUrl": "http://img1.qunarzz.com/sight/p0/1410/be/d44bb81ae3218a627a65ded451326b2c.water.jpg_350x240_9f163cbc.jpg"
+    }],
+    "tickets": [{
+      "id": 1,
+      "title": "当日票",
+      "children": [{
+        "id": 1,
+        "title": "【当日票】故宫老人票",
+        "idRequired": true,
+        "unfold": false,
+        "detail": [{
+          "id": 1,
+          "title": "【上午场】故宫成人票凭身份证入园（快速入园）",
+          "abled": "23:59前可订明日",
+          "price": 60
+        }, {
+          "id": 2,
+          "title": "【上午场】北京故宫成人票",
+          "abled": "23:50前可订明日",
+          "price": 60
+        }, {
+          "id": 3,
+          "title": "【上午场】故宫成人票【刷证件入园，支持护照和港澳通行证】",
+          "abled": "23:59前可订明日",
+          "price": 60
+        }]
+      }]
+    }, {
+      "id": 2,
+      "title": "预售学生票",
+      "children": [{
+        "id": 0,
+        "title": "上午场",
+        "idRequired": true,
+        "unfold": false,
+        "detail": [{
+          "id": 1,
+          "title": "【上午场】故宫学生票凭身份证入园（快速入园）",
+          "abled": "23:59前可订明日",
+          "price": 20
+        }, {
+          "id": 2,
+          "title": "【上午场】故宫学生票【刷证件入园，支持护照和港澳通行证】",
+          "abled": "23:50前可订明日",
+          "price": 20
+        }]
+      }, {
+        "id": 2,
+        "title": "下午场",
+        "idRequired": true,
+        "unfold": false,
+        "detail": [{
+          "id": 1,
+          "title": "【下午场】故宫学生票凭身份证入园（快速入园）",
+          "abled": "23:59前可订明日",
+          "price": 20
+        }, {
+          "id": 2,
+          "title": "【下午场】故宫学生票【刷证件入园，支持护照和港澳通行证】",
+          "abled": "23:50前可订明日",
+          "price": 20
+        }]
+      }]
+    }, {
+      "id": 3,
+      "title": "预售老人票",
+      "children": [{
+        "id": 1,
+        "title": "上午场",
+        "idRequired": true,
+        "unfold": false,
+        "detail": [{
+          "id": 1,
+          "title": "【上午场】故宫老人票凭身份证入园（快速入园）",
+          "abled": "23:59前可订明日",
+          "price": 30
+        }, {
+          "id": 2,
+          "title": "【上午场】故宫老人票【刷证件入园，支持护照和港澳通行证】",
+          "abled": "23:50前可订明日",
+          "price": 30
+        }]
+      }, {
+        "id": 2,
+        "title": "下午场",
+        "idRequired": true,
+        "unfold": false,
+        "detail": [{
+          "id": 1,
+          "title": "【下午场】故宫老人票凭身份证入园（快速入园）",
+          "abled": "23:59前可订明日",
+          "price": 30
+        }, {
+          "id": 2,
+          "title": "【下午场】故宫老人票【刷证件入园，支持护照和港澳通行证】",
+          "abled": "23:50前可订明日",
+          "price": 30
+        }]
+      }]
+    }, {
+      "id": 4,
+      "title": "导游讲解",
+      "children": [{
+        "id": 1,
+        "title": "【大内御讲 9:00场】蓝琪儿格格带您穿越故宫",
+        "idRequired": false,
+        "unfold": false,
+        "detail": [{
+          "id": 1,
+          "title": "【大内御讲9:00场】格格、阿哥带您穿越故宫（不含故宫门票）",
+          "abled": "23:59前可订明日",
+          "price": 65
+        }, {
+          "id": 2,
+          "title": "【大内御讲9:00场】阿哥格格带您穿越故宫（含故宫+珍宝馆）",
+          "abled": "23:50前可订明日",
+          "price": 135
+        }, {
+          "id": 3,
+          "title": "【大内御讲9:00场】阿哥格格带您穿越故宫不含故宫门票",
+          "abled": "23:59前可订明日",
+          "price": 65
+        }]
+      }, {
+        "id": 2,
+        "title": "【09:00场次】故宫讲解服务",
+        "idRequired": false,
+        "unfold": false,
+        "detail": [{
+          "id": 1,
+          "title": "故宫博物院人工讲解服务+赠送无线耳麦(1.2米<=儿童免费)",
+          "abled": "23:59前可订明日",
+          "price": 39
+        }, {
+          "id": 2,
+          "title": "【配无线耳麦】北京故宫-导游讲解服务（09:00场不含门票）",
+          "abled": "23:50前可订明日",
+          "price": 25
+        }, {
+          "id": 3,
+          "title": "【9点/13点半场】故宫门票+资深导游人工讲解*配备无线耳麦",
+          "abled": "23:59前可订明日",
+          "price": 86
+        }]
+      }]
+    }]
+  }
+}

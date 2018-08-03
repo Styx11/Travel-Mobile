@@ -2,7 +2,7 @@
   <div class="wrapper" ref="wrapper">
     <div class="content">
       <detail-header></detail-header>
-      <detail-main :notice="notice"></detail-main>
+      <detail-main :notice="notice" :tickets="tickets"></detail-main>
       <Gallery :imgList="pic"></Gallery>
       <Notice :notice="notice"></Notice>
       <Return></Return>
@@ -29,6 +29,7 @@ export default {
   data: function () {
     return {
       pic: [],
+      tickets: [],
       notice: [
         {
           id: 1,
@@ -41,19 +42,20 @@ export default {
     }
   },
   methods: {
-    getPic: function () {
-      axios.get('/api/pic.json')
-        .then(this.getPicSucc)
+    getDetail: function () {
+      axios.get('/api/detail.json')
+        .then(this.getDetailSucc)
     },
-    getPicSucc: function (res) {
+    getDetailSucc: function (res) {
       let data = res.data.data
       if (res.data.ret && data) {
         this.pic = data.pictures
+        this.tickets = data.tickets
       }
     }
   },
   mounted: function () {
-    this.getPic()
+    this.getDetail()
   }
 }
 </script>

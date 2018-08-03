@@ -3,7 +3,7 @@
     <div>
       <detail-banner></detail-banner>
       <detail-info :notice="notice"></detail-info>
-      <detail-ticket></detail-ticket>
+      <detail-ticket :tickets="tickets"></detail-ticket>
       <detail-footer></detail-footer>
     </div>
   </div>
@@ -25,6 +25,9 @@ export default {
   },
   props: {
     notice: {
+      type: Array
+    },
+    tickets: {
       type: Array
     }
   },
