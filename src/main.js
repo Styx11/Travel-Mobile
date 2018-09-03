@@ -8,6 +8,7 @@ import rate from 'vue-rate'
 import VueLazyload from 'vue-lazyload'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 
+import 'babel-polyfill'
 import lazyloadImg from '@/assets/lazyload.png'
 import 'swiper/dist/css/swiper.css'
 import '@/assets/styles/border.css'
