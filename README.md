@@ -1,6 +1,11 @@
 # vue-project-travel
 
-> A Vue.js project
+> Vue.js仿制移动端去哪网
+
+本项目为个人在学习Vue.js过程中的练手项目，利用vue-cli脚手架工具初始化，主要涉及了Vue.js基础、组件化开发、事件总线以及各类插件的使用
+
+## 预览图
+![](./src/assets/verb.gif '预览')
 
 ## Build Setup
 
